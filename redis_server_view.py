@@ -19,46 +19,6 @@ app.router.add_view('/view', MyView)
 def get_client():
     client = redis.Redis(decode_responses=True)
     return client
-# class AddView(web.View):
-#     async def request_add(self):
-#         try:
-#             print("请求中")
-#             text = await self.request.json()
-#             sent = text.get("sent", "")
-#             weight = text.get("weight", "")
-#             for i in range(len(sent)):
-#                 key = 'autocomplete:' + sent[:i+1]
-#                 get_client().zincrby(key, weight, sent)
-#         except Exception as e:
-#             print("an error is ", e)
-#         finally:
-#             return web.Response(text="success")
-#
-#
-# class QueryView(web.View):
-#     async def request_query(self):
-#         text = await self.request.json()
-#         word = text.get("word", "")
-#         key = 'autocomplete:' + word
-#         sent_list = get_client().zrevrange(key, 0, -1)
-#         print(sent_list)
-#         return web.json_response(data={"sent_list": sent_list})
-
-
-# def get_client():
-#     client = redis.Redis(decode_responses=True)
-#     return client
-
-
-# async def request_add(request: web.Request):
-#     text = await request.json()
-#     sent = text.get("sent", "")
-#     weight = text.get("weight", "")
-#     for i in range(len(sent)):
-#         key = 'http_autocomplete:' + sent[:i + 1]
-#         print(key)
-#         get_client().zincrby(key, weight, sent)
-#     return web.Response(text="success")
 
 
 class AddView(web.View):

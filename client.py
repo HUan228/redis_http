@@ -27,7 +27,6 @@ def query(term):
             "word": term,
         }
     )
-    # print(rsp.content.decode('utf-8'))
     print(rsp.json())
 
 
